@@ -31,6 +31,10 @@ export default class EmojiSuggestions extends Component {
       if (size <= 0) {
         this.closeDropdown();
       }
+      
+      if (!_this.props.store.getAllSearches().has(_this.activeOffsetKey)) {
+        return;
+      }
 
       const decoratorRect = this.props.store.getPortalClientRect(
         this.activeOffsetKey

@@ -16,6 +16,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+          registry-url: https://npm.pkg.github.com/
       - run: yarn install
       - run: yarn test
 
@@ -29,6 +30,8 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
       - run: yarn install
-      - run: yarn publish draft-js-emoji-plugin
+        working-directory: ./draft-js-emoji-plugin
+      - run: yarn publish
+        working-directory: ./draft-js-emoji-plugin
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
